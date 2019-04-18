@@ -13,7 +13,7 @@
                         </template>
                         <template v-else-if="item.children"><!--两级目录-->
                             <div @click="isToggle(item.name)">{{item.name}}</div>
-                            <transition name="sliderToggle" mode="out-in" :style="{'transform':'translateY('+subMenuHeight+'%)'}">
+                            <transition name="sliderToggle" mode="out-in">
                                 <ul v-show="item.name === toggleName" >
                                     <li v-for="(subitem, subindex) in item.children" :key="subindex">
                                         <div>{{subitem.name}}</div>
@@ -42,14 +42,7 @@ export default {
 	},
 	methods:{
 		isToggle(name){
-            //name!=this.toggleName ? this.toggleName=name : this.toggleName='';
-            if(name!=this.toggleName){
-                this.toggleName=name;
-                this.subMenuHeight=100;
-            }else{
-                this.toggleName='';
-                this.subMenuHeight=0;
-            }
+            name!=this.toggleName ? this.toggleName=name : this.toggleName='';
         }
 	}
 }
@@ -102,7 +95,6 @@ export default {
 .sliderToggle-enter-active,
 .sliderToggle-leave-active {
   transition: all 1s linear;
-  transform: translateY(100%);
   overflow: hidden;
 }
 .sliderToggle-enter,
