@@ -14,7 +14,7 @@
                         <template v-else-if="item.children"><!--两级目录-->
                             <div @click="isToggle(item.name)">{{item.name}}</div>
                             <transition name="sliderToggle" mode="out-in">
-                                <ul v-show="item.name === toggleName" >
+                                <ul v-show="item.name === toggleName" id="submenu">
                                     <li v-for="(subitem, subindex) in item.children" :key="subindex">
                                         <div>{{subitem.name}}</div>
                                     </li>
@@ -37,13 +37,15 @@ export default {
             currentURL:'',//当前显示的url
             toggleName: '',  // 菜单子项目名称
             defaultActive:true,
-            subMenuHeight:0,
 		}
 	},
 	methods:{
 		isToggle(name){
-            name!=this.toggleName ? this.toggleName=name : this.toggleName='';
-        }
+			name!=this.toggleName ? this.toggleName=name : this.toggleName='';
+			var submenu = document.getElementById("submenu");
+			var submenuHeight = submenu.height;
+			console.log(submenuHeight);
+		}
 	}
 }
 </script>
@@ -92,9 +94,10 @@ export default {
 .menu ul>li>ul>li>div{
 	background: #b7f5da;
 }
-.sliderToggle-enter-active,
+/* .sliderToggle-enter-active,
 .sliderToggle-leave-active {
-  transition: all 1s linear;
+  transition: all 0.3s linear;
+  height: 50px;
   overflow: hidden;
 }
 .sliderToggle-enter,
@@ -103,8 +106,7 @@ export default {
   padding-top: 0;
   padding-bottom: 0;
   height: 0;
-  /* opacity: 0; */
-}
+} */
 </style>
 
 
