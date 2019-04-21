@@ -9,14 +9,14 @@
                 <template v-for="(item, index) in menulist">
                     <li :class="currentURL===item.url ?'active': ''" :key="index">
                         <template v-if="item.url"><!--单级目录-->
-                            <div>{{item.name}}</div>
+                            <div><router-link :to="item.url">{{item.name}}</router-link></div>
                         </template>
                         <template v-else-if="item.children"><!--两级目录-->
                             <div @click="isToggle(item.name)">{{item.name}}</div>
                             <transition name="sliderToggle" mode="out-in">
                                 <ul v-show="item.name === toggleName" id="submenu">
                                     <li v-for="(subitem, subindex) in item.children" :key="subindex">
-                                        <div>{{subitem.name}}</div>
+                                        <div><router-link :to="subitem.url">{{subitem.name}}</router-link></div>
                                     </li>
                                 </ul>
                             </transition>

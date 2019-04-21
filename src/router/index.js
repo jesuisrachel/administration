@@ -11,7 +11,7 @@ export default new Router({
       path: '/',
       component: BasicLayout,
       children:[{
-        path: '/home',
+        path: 'home',
         component: HelloWorld,
       }]
     }

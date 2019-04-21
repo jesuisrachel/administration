@@ -35,31 +35,33 @@ export default {
     background: #B3DDD1;
     width: 15%;
     height: 100%;
-    position: fixed;
+    position: absolute;
     left: 0;
 }
-.Right{
+/* .Right{
     width: 85%;
     height: 100%;
-    float: right;
-}
-.Top{
-    width: 100%;
+} */
+.Top, .Bottom{
     background: #EF9C6C;
     height: 5%;
-    position: fixed;
+    position: absolute;
+    right: 0;
+    left: 15%;
+}
+.Top{
     top: 0;
 }
 .Content{
-    width: 100%;
     background: #D1DCE2;
-    min-height: 90%;
+    position: absolute;
+    overflow: auto;
+    right: 0;
+    left: 15%;
+    top: 5%;
+    bottom: 5%;
 }
 .Bottom{
-    width: 100%;
-    background: #EF9C6C;
-    height: 5%;
-    position: fixed;
     bottom: 0;
 }
 </style>
