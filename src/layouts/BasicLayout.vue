@@ -19,7 +19,7 @@
 
 <script>
 import GlobalHeader from '@/components/GlobalHeader' 
-import SideMenu from '@/components/SideMenu' 
+import SideMenu from '@/components/SideMenu1' 
 import GlobalFooter from '@/components/GlobalFooter' 
 export default {
   components: {
