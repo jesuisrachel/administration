@@ -1,6 +1,24 @@
 <template>
     <div>
         <h1>ALOHA</h1>
-        <h1>11111111111111111111111111111111111111111111111111111111111111111111111</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
+        <h1>ALOHA</h1>
     </div>
 </template>

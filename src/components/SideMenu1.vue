@@ -6,23 +6,45 @@
         </div>
 		<div class="menu">
 			<ul>
-                <template v-for="(item, index) in menulist">
-                    <li :class="currentURL===item.url ?'active': ''" :key="index">
-                        <template v-if="item.url"><!--单级目录-->
-                            <div><router-link :to="item.url">{{item.name}}</router-link></div>
-                        </template>
-                        <template v-else-if="item.children"><!--两级目录-->
-                            <div @click="isToggle(item.name)">{{item.name}}</div>
-                            <transition name="sliderToggle" mode="out-in">
-                                <ul v-show="item.name === toggleName" id="submenu">
-                                    <li v-for="(subitem, subindex) in item.children" :key="subindex">
-                                        <div><router-link :to="subitem.url">{{subitem.name}}</router-link></div>
-                                    </li>
-                                </ul>
-                            </transition>
-                        </template>
-                    </li>
-                </template>
+				<template v-for="(item, index) in menulist">
+					<li :class="currentURL===item.url ?'active': ''" :key="index">
+						<template v-if="item.url"><!--单级目录-->
+							<router-link :to="item.url">
+								<div>
+									<svg class="icon" aria-hidden="true">
+										<use :xlink:href="item.icon"></use>
+									</svg>
+									{{item.name}}
+								</div>
+							</router-link>
+						</template>
+						<template v-else-if="item.children"><!--两级目录-->
+							<div @click="isToggle(item.name)">
+								<svg class="icon" arial-hidden="true">
+									<use :xlink:href="item.icon"></use>
+								</svg>
+								{{item.name}}
+								<i :class="item.name === toggleName?'icon-up-circle':'icon-down-circle'" class="iconfont slidedownIcon"></i>
+							</div>
+							<transition name="sliderToggle" mode="out-in">
+								<ul v-show="item.name === toggleName" id="submenu">
+									<template v-for="(subitem, subindex) in item.children">
+										<li :class="currentURL===subitem.url ?'active': 'notActive'" :key="subindex">
+											<router-link :to="subitem.url">
+												<div>
+													<svg class="icon" arial-hidden="true">
+														<use :xlink:href="subitem.icon"></use>
+													</svg>
+													{{subitem.name}}
+												</div>
+											</router-link>
+										</li>
+									</template>
+								</ul>
+							</transition>
+						</template>
+					</li>
+				</template>
 			</ul>
 		</div>
   	</div>
@@ -34,17 +56,30 @@ export default {
 	data(){
 		return{
             menulist: MenuList,//目录数据
-            currentURL:'',//当前显示的url
+            currentURL:'/home',//当前显示的url
             toggleName: '',  // 菜单子项目名称
             defaultActive:true,
 		}
 	},
+	watch:{
+		'$route'(){
+			this.currentURL = this.$route.fullPath;
+			console.log(this.currentURL);
+		}	
+	},
 	methods:{
 		isToggle(name){
 			name!=this.toggleName ? this.toggleName=name : this.toggleName='';
-			var submenu = document.getElementById("submenu");
-			var submenuHeight = submenu.height;
-			console.log(submenuHeight);
+			//unkownHeight slide down
+			// var submenu = document.getElementById("submenu");
+			// submenu.style.height = 'auto';
+			// let height= window.getComputedStyle(submenu, null)['height'];
+			// submenu.style.height = '0';
+			// setTimeout(function () {
+      //       submenu.style.height = height;
+      //       // el.style.paddingTop = paddingTop;
+      //       submenu.style.opacity = 1;
+      //     }, 3000);
 		}
 	}
 }
@@ -91,13 +126,25 @@ export default {
 	background: #80BEAF;
 	color: white;
 }
-.menu ul>li>ul>li>div{
+.slidedownIcon{
+	float: right;
+	margin-right: 15px; 
+}
+.notActive{
 	background: #b7f5da;
 }
-/* .sliderToggle-enter-active,
+a{
+	text-decoration: none;
+	color: #3e5266;
+}	
+.active{
+	background: #80BEAF;
+}
+.sliderToggle-enter-active,
 .sliderToggle-leave-active {
   transition: all 0.3s linear;
-  height: 50px;
+  height: 100%;
+  height: auto;
   overflow: hidden;
 }
 .sliderToggle-enter,
@@ -106,7 +153,18 @@ export default {
   padding-top: 0;
   padding-bottom: 0;
   height: 0;
-} */
+  opacity: 0;
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+.icon:hover {
+  font-size: 24px;
+}
 </style>
 
 

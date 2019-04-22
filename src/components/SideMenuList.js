@@ -1,51 +1,65 @@
 export const MenuList=[
     {
         name: "首页",
-        url:"home"
+        url:"/home",
+        icon: "#icon-mao3"
     },
     {
         name:"福瑞部落格",
+        icon: "#icon-buoumaotubiao45",
         children:[
             {
                 name:"相册",
-                url:"album"
+                url:"/album",
+                icon: "#icon-Artboard"
             },{
                 name:"博客",
-                url:"blog"
+                url:"/blog",
+                icon: "#icon-maomi"
             }
         ]
     },{
         name:"福瑞的家",
+        icon: "#icon-maomao",
         children:[
             {
                 name:"福瑞",
-                url:""
+                url:"",
+                icon: "#icon-mao"
             },{
                 name:"福吉",
-                url:""
+                url:"",
+                icon: "#icon-maomi1"
             },{
                 name:"福临",
-                url:""
+                url:"",
+                icon: "#icon-mao1"
             },{
                 name:"福尔康",
-                url:""
+                url:"",
+                icon: "#icon-mao2"
             },{
                 name:"福尔泰",
-                url:""
+                url:"",
+                icon: "#icon-mao3"
             },
         ]
     },{
         name:"福家种族分类",
+        icon: "#icon-maomi",
         children:[
             {
                 name:"橘猫",
-                url:""
+                url:"",
+                icon: "#icon-mao1"
             },{
                 name:"银渐层",
-                url:""
+                url:"",
+                icon: "#icon-mao2"
             },{
                 name:"金渐层",
-                url:""
+                url:"",
+                icon: "#icon-mao3"
             }
         ]
     }

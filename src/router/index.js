@@ -10,9 +10,14 @@ export default new Router({
     {
       path: '/',
       component: BasicLayout,
+      redirect:'/home',
       children:[{
-        path: 'home',
+        path: '/home',
         component: HelloWorld,
+      },{
+        path: '/album',
+      },{
+        path: '/blog',
       }]
     }
   ]
