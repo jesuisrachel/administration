@@ -61,15 +61,22 @@ export default {
             defaultActive:true,
 		}
 	},
+	mounted(){
+		this.currentURL = sessionStorage.getItem('currentURL');
+		console.log(this.currentURL);
+		this.toggleName = sessionStorage.getItem('toggleName');
+	},
 	watch:{
 		'$route'(){
 			this.currentURL = this.$route.fullPath;
+			sessionStorage.setItem('currentURL', this.currentURL);
 			console.log(this.currentURL);
 		}	
 	},
 	methods:{
 		isToggle(name){
-			name!=this.toggleName ? this.toggleName=name : this.toggleName='';
+			name!=this.toggleName ? this.toggleName=name : this.toggleName=''; 
+			sessionStorage.setItem('toggleName', this.toggleName);
 			//unkownHeight slide down
 			// var submenu = document.getElementById("submenu");
 			// submenu.style.height = 'auto';

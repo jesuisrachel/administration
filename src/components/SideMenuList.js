@@ -16,6 +16,10 @@ export const MenuList=[
                 name:"博客",
                 url:"/blog",
                 icon: "#icon-maomi"
+            },{
+                name:"视频",
+                url:"/vlog",
+                icon:"#icon-mao"
             }
         ]
     },{
