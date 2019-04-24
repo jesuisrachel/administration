@@ -98,7 +98,7 @@ export default {
 	margin: 15px;
 	height: 50px;
 	color: white;
-	font-size: 28px;
+	font-size: 1.2em;
 	font-weight: bolder;
 }
 .menuTop img{
