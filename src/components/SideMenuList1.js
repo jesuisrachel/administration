@@ -28,8 +28,18 @@ export const MenuList=[
         children:[
             {
                 name:"福瑞",
-                url:"",
-                icon: "#icon-mao"
+                icon: "#icon-mao",
+                children:[
+                    {
+                        name:"小一目录",
+                        icon:"",
+                        url:"/xiaoyi"
+                    }, {
+                        name:"小二目录",
+                        icon:"",
+                        url:"/xiaoer"
+                    }
+                ]
             },{
                 name:"福吉",
                 url:"",

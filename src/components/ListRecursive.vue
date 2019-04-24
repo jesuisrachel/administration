@@ -1,8 +1,7 @@
 <template>
     <div>
         <ul v-for="(item, index) in menudata" :key="index">
-            <li v-if="!item.children" 
-                >
+            <li v-if="!item.children">
                 <router-link :to="item.url">
                     <div class="submenu">
                         <svg class="icon" aria-hidden="true">
@@ -20,7 +19,7 @@
                     {{item.name}}
                     <i :class="item.name === toggleName?'icon-up-circle':'icon-down-circle'" class="iconfont slidedownIcon"></i>
                 </div>
-                <listRecursive :menudata="item.children"></listRecursive>
+                <listRecursive v-show="item.name === toggleName" :menudata="item.children"></listRecursive>
             </li>
         </ul>
     </div>
@@ -35,13 +34,12 @@ export default {
             currentURL:'/home',//当前显示的url
             toggleName: '',  // 菜单子项目名称
             defaultActive:true,
+            isShow: false,
 		}
     },
     methods:{
         isToggle(name){
             name!=this.toggleName ? this.toggleName=name : this.toggleName=''; 
-            console.log(name);                                                                                                                                    
-            console.log(this.toggleName);
         }
     }
 }
